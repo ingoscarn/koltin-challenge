@@ -13,5 +13,5 @@ from {{ ref('silver_customer_certificates') }} cc
 left join {{ ref('silver_customer_claims') }} ccl
     on cc.certificate_number = ccl.certificate_number
 left join {{ ref('silver_medical_consultations') }} mc
-    on mc.base_id = cc.certificate_number
+    on mc.base_id = cc.base_id
     order by customer_id asc
