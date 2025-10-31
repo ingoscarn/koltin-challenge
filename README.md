@@ -1,61 +1,53 @@
 # koltin_challenge
 
-## Getting started
+Bien pues esta es la solucion que propongo al challenge!
+Muchas gracias por la oportunidad de participar en el proceso de selección.
 
-### Installing dependencies
+### Video
 
-**Option 1: uv**
+<video src="media/intro.mp4" controls width="600"></video>
 
-Ensure [`uv`](https://docs.astral.sh/uv/) is installed following their [official documentation](https://docs.astral.sh/uv/getting-started/installation/).
 
-Create a virtual environment, and install the required dependencies using _sync_:
 
-```bash
-uv sync
+
+
+### Estructura del proyecto
+El proyecto está estructurado en 3 capas: bronze, silver y gold.
+- **Bronze**: Carga de datos en bruto desde los archivos CSV proporcionados.
+- **Silver**: Limpieza y transformación de los datos para asegurar su calidad e integridad
+- **Gold**: Modelos analíticos y de negocio listos para su consumo.
+
+### Instrucciones para ejecutar el proyecto
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/ingoscarn/koltin-challenge.git
+    cd koltin-challenge
+    ``` 
+
+2. Instala las dependencias de dbt:
+    ```bash
+    uv add dbt-core dbt-snowflake
+    ``` 
+
+3. Instala dagster y las dependencias necesarias:
+    ```bash
+    uv add dagster dagster-dbt
+    ``` 
+
+4. Pega el archivo profile.yml en la carpeta ~/.dbt/ para configurar la conexión a Snowflake en
+  ```bash
+  dbt/koltin/profiles.yml
 ```
 
-Then, activate the virtual environment:
+5. Ejecuta el ui de dagster:
+    ```bash
+    dagster dev
+    ```
 
-| OS | Command |
-| --- | --- |
-| MacOS | ```source .venv/bin/activate``` |
-| Windows | ```.venv\Scripts\activate``` |
 
-**Option 2: pip**
+### Visualización del lineage con Dagster
 
-Install the python dependencies with [pip](https://pypi.org/project/pip/):
+![alt text](media/dagter_lineage.png "Dagster Lineage")
 
-```bash
-python3 -m venv .venv
-```
 
-Then activate the virtual environment:
-
-| OS | Command |
-| --- | --- |
-| MacOS | ```source .venv/bin/activate``` |
-| Windows | ```.venv\Scripts\activate``` |
-
-Install the required dependencies:
-
-```bash
-pip install -e ".[dev]"
-```
-
-### Running Dagster
-
-Start the Dagster UI web server:
-
-```bash
-dg dev
-```
-
-Open http://localhost:3000 in your browser to see the project.
-
-## Learn more
-
-To learn more about this template and Dagster in general:
-
-- [Dagster Documentation](https://docs.dagster.io/)
-- [Dagster University](https://courses.dagster.io/)
-- [Dagster Slack Community](https://dagster.io/slack)
+![alt text](media/snowflake.png)
