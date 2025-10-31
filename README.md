@@ -106,9 +106,9 @@ flowchart LR
     ``` 
 
 4. Pega el archivo profile.yml en la carpeta ~/.dbt/ para configurar la conexión a Snowflake en
-  ```bash
-  dbt/koltin/profiles.yml
-```
+    ```bash
+    dbt/koltin/profiles.yml
+    ```
 
 5. Ejecuta el ui de dagster:
     ```bash
