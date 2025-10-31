@@ -1,0 +1,156 @@
+version: 2
+
+models:
+  - name: silver_medical_pathologies
+    description: '{{ doc("silver_medical_pathologies") }}'
+    columns:
+      - name: pathology_id
+        description: '{{ doc("pathology_id") }}'
+        tests:
+          - not_null
+          - unique
+      - name: cie10_code
+        description: '{{ doc("cie10_code") }}'
+        tests:
+          - not_null
+      - name: pathology_name
+        description: '{{ doc("pathology_name") }}'
+        tests:
+          - not_null
+
+  - name: silver_medical_consultations
+    description: '{{ doc("silver_medical_consultations") }}'
+    columns:
+      - name: id
+        description: '{{ doc("consultations_id") }}'
+        tests:
+          - not_null
+          - unique
+      - name: base_id
+        description: '{{ doc("certificate_number") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_customer_certificates')
+                field: base_id
+      - name: consultation_date
+        description: '{{ doc("consultation_date") }}'
+        tests:
+          - not_null
+      - name: consultation_observation
+        description: '{{ doc("consultation_observation") }}'
+      - name: consult_patient_goal
+        description: '{{ doc("consult_patient_goal") }}'
+      - name: consult_specialist_goal
+        description: '{{ doc("consult_specialist_goal") }}'
+      - name: pause_consultations
+        description: '{{ doc("pause_consultations") }}'
+      - name: diagnose_pathology_ids
+        description: '{{ doc("diagnose_pathology_ids") }}'
+      - name: specialty
+        description: '{{ doc("specialty") }}'
+      - name: placed_by
+        description: '{{ doc("placed_by") }}'
+
+  - name: silver_customer_claims
+    description: '{{ doc("silver_customer_claims") }}'
+    columns:
+      - name: claim_id
+        description: '{{ doc("claim_id") }}'
+        tests:
+          - not_null
+          - unique
+      - name: cie10_code
+        description: '{{ doc("cie10_code") }}'
+      - name: diagnosis
+        description: '{{ doc("diagnosis") }}'
+      - name: certificate_number
+        description: '{{ doc("certificate_number") }}'
+        tests:
+          - relationships:
+              arguments:
+                to: ref('silver_customer_certificates')
+                field: certificate_number
+      - name: occurred_date
+        description: '{{ doc("occurred_date") }}'
+      - name: payment_date
+        description: '{{ doc("payment_date") }}'
+      - name: first_expense_date
+        description: '{{ doc("first_expense_date") }}'
+      - name: occurred_amount
+        description: '{{ doc("occurred_amount") }}'
+      - name: payment_amount
+        description: '{{ doc("payment_amount") }}'
+      - name: coinsurance
+        description: '{{ doc("coinsurance") }}'
+      - name: tax_recovery
+        description: '{{ doc("tax_recovery") }}'
+      - name: deductible
+        description: '{{ doc("deductible") }}'
+      - name: cause
+        description: '{{ doc("cause") }}'
+      - name: provider_class
+        description: '{{ doc("provider_class") }}'
+
+  - name: silver_customer_certificates
+    description: '{{ doc("silver_customer_certificates") }}'
+    columns:
+      - name: base_id
+        description: '{{ doc("certificate_id") }}'
+        tests:
+          - not_null
+          - unique
+      - name: full_name
+        description: '{{ doc("full_name") }}'
+        tests:
+          - not_null
+      - name: email
+        description: '{{ doc("email") }}'
+      - name: age
+        description: '{{ doc("age") }}'
+      - name: city
+        description: '{{ doc("city") }}'
+      - name: birth_date
+        description: '{{ doc("birth_date") }}'
+      - name: certificate_number
+        description: '{{ doc("certificate_number") }}'
+        tests:
+          - not_null
+          - unique
+      - name: gender
+        description: '{{ doc("gender") }}'
+      - name: age_in_years
+        description: '{{ doc("age_in_years") }}'
+
+  - name: silver_customer_certificate_terms
+    description: '{{ doc("silver_customer_certificate_terms") }}'
+    columns:
+      - name: id
+        description: '{{ doc("certificate_terms_id") }}'
+        tests:
+          - not_null
+          - unique
+      - name: base_id
+        description: '{{ doc("certificate_number") }}'
+        tests:
+          - not_null
+          #- relationships:
+              #arguments:
+                #to: ref('silver_customer_certificates')
+                #field: certificate_number
+      - name: start_date
+        description: '{{ doc("start_date") }}'
+        tests:
+          - not_null
+      - name: end_date
+        description: '{{ doc("end_date") }}'
+        tests:
+          - not_null
+      - name: validity_days
+        description: '{{ doc("validity_days") }}'
+      - name: validity_months
+        description: '{{ doc("validity_months") }}'
+      - name: is_active
+        description: '{{ doc("is_active") }}'
+

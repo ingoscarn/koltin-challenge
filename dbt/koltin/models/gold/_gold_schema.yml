@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: gold_clinical_interactions
+    description: "{{ doc('gold_clinical_interactions') }}"
+    columns:
+      - name: customer_id
+        description: "{{ doc('customer_id') }}"
+        data_tests:
+          - not_null
+      - name: customer_email
+        description: "{{ doc('customer_email') }}"
+      - name: customer_current_age
+        description: "{{ doc('customer_current_age') }}"
+      - name: customer_gender
+        description: "{{ doc('customer_gender') }}"
+      - name: customer_name
+        description: "{{ doc('customer_name') }}"
+      - name: medical_consult_date
+        description: "{{ doc('medical_consult_date') }}"
+      - name: medical_consult_observation
+        description: "{{ doc('medical_consult_observation') }}"
+      - name: medical_consult_diagnoses
+        description: "{{ doc('medical_consult_diagnoses') }}"
+      - name: claim_id
+        description: "{{ doc('cust_claim_id') }}"
+      - name: claim_occurred_date
+        description: "{{ doc('claim_occurred_date') }}"
+
+  - name: gold_customer_statistics
+    description: "{{ doc('gold_customer_statistics') }}"
+    columns:
+      - name: customer_id
+        description: "{{ doc('customer_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "{{ doc('customer_name') }}"
+      - name: customer_email
+        description: "{{ doc('customer_email') }}"
+      - name: customer_city
+        description: "{{ doc('customer_city') }}"
+      - name: customer_gender
+        description: "{{ doc('customer_gender') }}"
+      - name: customer_birth_date
+        description: "{{ doc('customer_birth_date') }}"
+      - name: customer_current_age
+        description: "{{ doc('customer_current_age') }}"
+      - name: total_claims
+        description: "{{ doc('total_claims') }}"
+      - name: last_claim_date
+        description: "{{ doc('last_claim_date') }}"
+      - name: total_consultations
+        description: "{{ doc('total_consultations') }}"
+      - name: last_consultation_date
+        description: "{{ doc('last_consultation_date') }}"
+
+  - name: gold_medical_consultation_diagnoses
+    description: "{{ doc('gold_medical_consultation_diagnoses') }}"
+    columns:
+      - name: customer_id
+        description: "{{ doc('customer_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "{{ doc('customer_name') }}"
+      - name: consultation_diagnosis_date
+        description: "{{ doc('consultation_diagnosis_date') }}"
+      - name: consultation_diagnosis_name
+        description: "{{ doc('consultation_diagnosis_name') }}"
+      - name: age_at_consultation_diagnosis
+        description: "{{ doc('age_at_consultation_diagnosis') }}"
+      - name: current_customer_age
+        description: "{{ doc('current_customer_age') }}"

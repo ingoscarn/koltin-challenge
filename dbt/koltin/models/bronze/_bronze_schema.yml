@@ -1,0 +1,123 @@
+version: 2
+
+models:
+  - name: bronze_customer_certificates
+    description: '{{ doc("bronze_customer_certificates") }}'
+    columns:
+      - name: id
+        description: '{{ doc("bronze_customer_certificates__id") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: '{{ doc("bronze_customer_certificates__full_name") }}'
+      - name: email
+        description: '{{ doc("bronze_customer_certificates__email") }}'
+      - name: age
+        description: '{{ doc("bronze_customer_certificates__age") }}'
+      - name: city
+        description: '{{ doc("bronze_customer_certificates__city") }}'
+      - name: birth_date
+        description: '{{ doc("bronze_customer_certificates__birth_date") }}'
+      - name: certificate_number
+        description: '{{ doc("bronze_customer_certificates__certificate_number") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: gender
+        description: '{{ doc("bronze_customer_certificates__gender") }}'
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['M', 'F']
+
+
+  - name: bronze_customer_claims
+    description: '{{ doc("bronze_customer_claims") }}'
+    columns:
+      - name: claim_id
+        description: '{{ doc("bronze_customer_claims__claim_id") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: state
+        description: '{{ doc("bronze_customer_claims__state") }}'
+      - name: cie10_code
+        description: '{{ doc("bronze_customer_claims__cie10_code") }}'
+      - name: diagnosis
+        description: '{{ doc("bronze_customer_claims__diagnosis") }}'
+      - name: occurred_date_raw
+        description: '{{ doc("bronze_customer_claims__occurred_date_raw") }}'
+      - name: payment_date_raw
+        description: '{{ doc("bronze_customer_claims__payment_date_raw") }}'
+      - name: first_expense_date_raw
+        description: '{{ doc("bronze_customer_claims__first_expense_date_raw") }}'
+      - name: occurred_amount_raw
+        description: '{{ doc("bronze_customer_claims__occurred_amount_raw") }}'
+      - name: payment_amount_raw
+        description: '{{ doc("bronze_customer_claims__payment_amount_raw") }}'
+      - name: coinsurance_raw
+        description: '{{ doc("bronze_customer_claims__coinsurance_raw") }}'
+      - name: tax_recovery_raw
+        description: '{{ doc("bronze_customer_claims__tax_recovery_raw") }}'
+      - name: deductible_raw
+        description: '{{ doc("bronze_customer_claims__deductible_raw") }}'
+      - name: cause
+        description: '{{ doc("bronze_customer_claims__cause") }}'
+      - name: month_code
+        description: '{{ doc("bronze_customer_claims__month_code") }}'
+      - name: accounting_month_raw
+        description: '{{ doc("bronze_customer_claims__accounting_month_raw") }}'
+      - name: payment_type
+        description: '{{ doc("bronze_customer_claims__payment_type") }}'
+      - name: provider_class
+        description: '{{ doc("bronze_customer_claims__provider_class") }}'
+      - name: certificate_number
+        description: '{{ doc("bronze_customer_claims__certificate_number") }}'
+
+  - name: bronze_customer_certificate_terms
+    description: '{{ doc("bronze_customer_certificate_terms") }}'
+    columns:
+      - name: id
+        description: '{{ doc("bronze_customer_certificate_terms__id") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: certificate_number
+        description: '{{ doc("bronze_customer_certificate_terms__certificate_number") }}'
+      - name: start_date_raw
+        description: '{{ doc("bronze_customer_certificate_terms__start_date_raw") }}'
+      - name: end_date_raw
+        description: '{{ doc("bronze_customer_certificate_terms__end_date_raw") }}'
+
+  - name: bronze_medical_pathologies
+    description: '{{ doc("bronze_medical_pathologies") }}'
+    columns:
+      - name: code
+        description: '{{ doc("bronze_medical_pathologies__code") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: id
+        description: '{{ doc("bronze_medical_pathologies__id") }}'
+      - name: pathology_name
+        description: '{{ doc("bronze_medical_pathologies__pathology_name") }}'
+
+  - name: bronze_medical_consultations
+    description: '{{ doc("bronze_medical_consultations") }}'
+    columns:
+      - name: id
+        description: '{{ doc("bronze_medical_consultations__id") }}'
+        data_tests:
+          - unique
+          - not_null
+      - name: certificate_number
+        description: '{{ doc("bronze_medical_consultations__certificate_number") }}'
+      - name: consultation_date_raw
+        description: '{{ doc("bronze_medical_consultations__consultation_date_raw") }}'
+      - name: closure_json
+        description: '{{ doc("bronze_medical_consultations__closure_json") }}'
+      - name: specialty
+        description: '{{ doc("bronze_medical_consultations__specialty") }}'
+      - name: placed_by
+        description: '{{ doc("bronze_medical_consultations__placed_by") }}'
