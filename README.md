@@ -4,7 +4,7 @@ Bien pues esta es la solucion que propongo al challenge!
 Muchas gracias por la oportunidad de participar en el proceso de selección.
 
 ### Video
-
+[![Ver video](media/demo_thumbnail.png)](media/intro.mp4)
 <video src="media/intro.mp4" controls width="600"></video>
 
 
