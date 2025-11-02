@@ -13,6 +13,8 @@ Muchas gracias por la oportunidad de participar en el proceso de selección.
 Se ha implementado un pipeline adicional que utiliza Large Language Models (LLMs) para estimar el tiempo de recuperación de pacientes basado en su edad y diagnóstico médico. Este pipeline se orquesta con Dagster y se integra con el resto del proyecto.
 Usando Open Router y el modelo **deepseek/deepseek-chat-v3.1:free**, se envían prompts personalizados para obtener estimaciones de recuperación.
 
+Tabla de resultados generada: **gold_medical_diagnoses_recovery_estimates_llm**
+
 
 ### Estructura del proyecto
 El proyecto está estructurado en 3 capas: bronze, silver y gold.
@@ -77,7 +79,7 @@ flowchart LR
     end
 
     subgraph Consumo["Consumo / Analítica"]
-        C1["Dashboards BI"]
+        C1["Open Router LLM Requests"]
         C2["Modelos predictivos (ML)"]
         C3["APIs o reportes automáticos"]
         G1 --> C1
@@ -125,7 +127,10 @@ flowchart LR
 ![alt text](media/dagter_lineage.png "Dagster Lineage")
 
 
-![alt text](image.png)
-
 ### Evidencia de carga en Snowflake
 ![alt text](media/snowflake.png)
+
+
+### Evidencia uso Open Router
+
+![alt text](media/open-router.png "Open Router LLM Response")
