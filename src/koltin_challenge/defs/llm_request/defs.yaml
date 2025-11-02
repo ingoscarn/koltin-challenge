@@ -1,0 +1,8 @@
+type: dagster.PythonScriptComponent
+attributes:
+  execution:
+    path: etl_llm_request.py
+  assets:
+    - key: etl_llm_request
+      deps:
+        - "{{ load_component_at_path('dbt_ingest').asset_key_for_model('gold_medical_consultation_diagnoses') }}"

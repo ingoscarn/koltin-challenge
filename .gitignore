@@ -202,3 +202,10 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 dbt/koltin/profiles.yml
+
+
+#tmp folders
+.tmp*/
+
+#macOS
+.DS_Store

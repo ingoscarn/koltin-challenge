@@ -3,12 +3,15 @@
 Bien pues esta es la solucion que propongo al challenge!
 Muchas gracias por la oportunidad de participar en el proceso de selección.
 
+
 ### Video
 [![Ver video](media/demo_thumbnail.png)](media/intro.mp4)
 <video src="media/intro.mp4" controls width="600"></video>
 
 
-
+### Bonus Track - Estimación de recuperación de pacientes usando LLMs
+Se ha implementado un pipeline adicional que utiliza Large Language Models (LLMs) para estimar el tiempo de recuperación de pacientes basado en su edad y diagnóstico médico. Este pipeline se orquesta con Dagster y se integra con el resto del proyecto.
+Usando Open Router y el modelo **deepseek/deepseek-chat-v3.1:free**, se envían prompts personalizados para obtener estimaciones de recuperación.
 
 
 ### Estructura del proyecto
@@ -22,6 +25,7 @@ El proyecto está estructurado en 3 capas: bronze, silver y gold.
 - **Snowflake**: Como data warehouse para almacenar y gestionar los datos.
 - **Dagster**: Para la orquestación y gestión de los pipelines de datos.
 - **AWS S3**: Para el almacenamiento de los archivos CSV originales.
+- **Open Router**: Se implemento el extra de ejemplo para sacar el estimado de recuperacion de pacientes usando LLMs. **deepseek/deepseek-chat-v3.1:free**
 
 
 ### Flujo de datos
@@ -121,4 +125,7 @@ flowchart LR
 ![alt text](media/dagter_lineage.png "Dagster Lineage")
 
 
+![alt text](image.png)
+
+### Evidencia de carga en Snowflake
 ![alt text](media/snowflake.png)
